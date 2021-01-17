@@ -2,6 +2,8 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+import time
+
 def pytest_addoption(parser):
     parser.addoption('--language', action="store", default="en", help="Choose a language of your tests: ")
    
@@ -16,5 +18,6 @@ def browser(request):
     else:
         print ("Please, choose a language of the site. You have to add parameter '--language lang_code' before starting a test.")
     yield browser
+    time.sleep(3)
     browser.quit()
 
